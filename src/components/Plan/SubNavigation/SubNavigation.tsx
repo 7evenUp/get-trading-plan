@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { create } from '../../redux/planSlice'
+import { Outlet } from 'react-router-dom'
+import { create } from '../../../redux/planSlice'
 
 export default function SubNavigation() {
   const dispatch = useDispatch()
@@ -18,6 +19,7 @@ export default function SubNavigation() {
       }}>
         Create new plan
       </button>
+      <Outlet />
     </div>
   )
 }
