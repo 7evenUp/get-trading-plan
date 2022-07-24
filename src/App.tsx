@@ -1,8 +1,13 @@
 import './App.css'
+import { Main, Navigation, SubNavigation } from './components'
 
 function App() {
   return (
-    <div>My App</div>
+    <main className='App'>
+      <Navigation />
+      <SubNavigation />
+      <Main />
+    </main>
   )
 }
 
