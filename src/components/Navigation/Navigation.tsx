@@ -3,9 +3,9 @@ import logo from './logo.svg'
 
 export default function Navigation() {
   return (
-    <nav style={{backgroundColor: '#111111', width: 200, padding: '60px 32px'}}>
+    <nav style={{backgroundColor: '#111111', width: 200, padding: '60px 32px', color: 'white'}}>
       <div>
-        <img src={logo} alt='Logo image' />
+        <img src={logo} alt='Logo' />
       </div>
       <div>
         <ul>
