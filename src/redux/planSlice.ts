@@ -15,8 +15,8 @@ const initialState: PlanState = {
   value: null
 }
 
-export const counterSlice = createSlice({
-  name: 'counter',
+export const planSlice = createSlice({
+  name: 'plan',
   initialState,
   reducers: {
     create: (state, action: PayloadAction<Plan>) => {
@@ -26,6 +26,6 @@ export const counterSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { create } = counterSlice.actions
+export const { create } = planSlice.actions
 
-export default counterSlice.reducer
+export default planSlice.reducer
