@@ -12,19 +12,19 @@ export default function SubNavigation() {
 
   return (
     <div className={styles.container}>
-      <h2>Plan</h2>
-      <hr />
+      <h2 className={styles.heading}>Plan</h2>
+      <hr style={{height: 1, width: 300}} />
       { isCreating ? (
         <div>Creating plan...</div>
       ) : (
         <Button
           label='Create new plan'
           onClick={() => {
-            dispatch(create({
-              title: 'MyFirstGoal',
-              deposit: 200,
-              goal: 100
-            }))
+            // dispatch(create({
+            //   title: 'MyFirstGoal',
+            //   deposit: 200,
+            //   goal: 100
+            // }))
 
             setIsCreating(true)
           }}
