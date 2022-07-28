@@ -5,3 +5,15 @@
   align-items: flex-start;
   gap: 16px;
 }
+
+.input {
+  outline: none;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+  font-size: 18px;
+}
+
+.input::placeholder {
+  color: #CBCBCB;
+}

@@ -14,12 +14,13 @@ const CreationForm = () => {
   return (
     <motion.form
       className={styles.form}
-      initial={{ opacity: 0, scale: 0.5 }}
+      initial={{ opacity: 0, scale: 0.1 }}
       animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.6 }}
     >
         Creating plan . . .
         <input
+          className={styles.input}
           value={deposit}
           onChange={(evt) => {setDeposit(evt.currentTarget.value)}}
           name='deposit'
@@ -27,6 +28,7 @@ const CreationForm = () => {
           placeholder='Enter your total deposit'
         />
         <input
+          className={styles.input}
           value={goal}
           onChange={(evt) => {setGoal(evt.currentTarget.value)}}
           name='goal'
