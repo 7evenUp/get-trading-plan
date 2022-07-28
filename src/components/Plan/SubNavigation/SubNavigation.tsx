@@ -1,10 +1,10 @@
 import { AddHexagon } from 'iconoir-react'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { Outlet } from 'react-router-dom'
-import { create } from '../../../redux/planSlice'
 import Button from '../../Button/Button'
 import styles from './SubNavigation.module.css'
+
+import CreationForm from './CreationForm'
 
 export default function SubNavigation() {
   const dispatch = useDispatch()
@@ -13,26 +13,18 @@ export default function SubNavigation() {
   return (
     <div className={styles.container}>
       <h2 className={styles.heading}>Plan</h2>
-      <hr style={{height: 1, width: 300}} />
+      <hr style={{height: 2, width: 300, backgroundColor: '#CBCBCB', border: 'none', borderRadius: 50}} />
       { isCreating ? (
-        <div>Creating plan...</div>
+        <CreationForm />
       ) : (
         <Button
           label='Create new plan'
           onClick={() => {
-            // dispatch(create({
-            //   title: 'MyFirstGoal',
-            //   deposit: 200,
-            //   goal: 100
-            // }))
-
             setIsCreating(true)
           }}
           iconComponent={<AddHexagon height={24} width={24} color='#FFFFFF' />}
         />
       )}
-      
-      <Outlet />
     </div>
   )
 }
