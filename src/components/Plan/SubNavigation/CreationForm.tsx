@@ -1,15 +1,17 @@
 import { motion } from 'framer-motion'
 import { CheckCircledOutline } from 'iconoir-react'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { create } from '../../../redux/planSlice'
 import Button from '../../Button/Button'
+import TextInput from '../../TextInput/TextInput'
 import styles from './CreationForm.module.css'
 
 const CreationForm = () => {
   const dispatch = useDispatch()
   const [deposit, setDeposit] = useState('')
   const [goal, setGoal] = useState('')
+  const selectRef = useRef<HTMLSelectElement>(null)
 
   return (
     <motion.form
@@ -19,30 +21,40 @@ const CreationForm = () => {
       transition={{ duration: 0.6 }}
     >
         Creating plan . . .
-        <input
-          className={styles.input}
-          value={deposit}
-          onChange={(evt) => {setDeposit(evt.currentTarget.value)}}
+        <TextInput 
           name='deposit'
-          type='text'
           placeholder='Enter your total deposit'
+          value={deposit}
+          changeValue={(evt) => setDeposit(evt.currentTarget.value)}
         />
-        <input
-          className={styles.input}
-          value={goal}
-          onChange={(evt) => {setGoal(evt.currentTarget.value)}}
+        <TextInput 
           name='goal'
-          type='text'
-          placeholder='Enter your goal' 
+          placeholder='Enter your goal'
+          value={goal}
+          changeValue={(evt) => setGoal(evt.currentTarget.value)}
         />
+        <label htmlFor='riskManagment'>
+          Choose your risk managment
+          <select defaultValue={2.5} name='riskManagment' id='riskManagment' ref={selectRef}>
+            <option value={2.5}>Safe</option>
+            <option value={5}>Common</option>
+            <option value={10}>Risky</option>
+          </select>
+        </label>
+
         <Button 
           label='Create a Plan'
           onClick={() => {
-            dispatch(create({
-              title: 'My plan',
-              deposit: parseInt(deposit),
-              goal: parseInt(goal)
-            }))
+            if (selectRef.current?.value !== undefined) {
+              dispatch(create({
+                title: 'My plan',
+                deposit: parseInt(deposit),
+                goal: parseInt(goal),
+                periodString: 'month',
+                periodDays: 30,
+                riskManagment: parseFloat(selectRef.current?.value)
+              }))
+            }
           }}
           iconComponent={<CheckCircledOutline height={24} width={24} color='#FFFFFF' />}
         />
